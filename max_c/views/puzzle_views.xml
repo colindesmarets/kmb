@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="puzzle_solver_form" model="ir.ui.view">
+			<field name="name">puzzle.solver.form</field>
+			<field name="model">puzzle.solver</field>
+			<field name="arch" type="xml">
+				<form string="Solvers">
+					<group>
+						<field name="name"/>
+						<field name="solution"/>
+						<field name="solved"/>
+						<field name="password"/>
+						<field name="login_tries"/>
+					</group>
+					<notebook>
+						<page name="parts" string="Parts">
+							<field name="part_ids"/>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<record id="puzzle_solver_tree" model="ir.ui.view">
+			<field name="name">puzzle.solver.tree</field>
+			<field name="model">puzzle.solver</field>
+			<field name="arch" type="xml">
+				<tree string="Solvers">
+					<field name="name"/>
+					<field name="solved"/>
+					<field name="login_tries"/>
+				</tree>
+			</field>
+		</record>
+		<record id="puzzle_solver_search" model="ir.ui.view">
+			<field name="name">puzzle.solver.search</field>
+			<field name="model">puzzle.solver</field>
+			<field name="arch" type="xml">
+				<search string="Solvers">
+					<field name="name"/>
+				</search>
+			</field>
+		</record>
+
+
+		<record id="puzzle_part_form" model="ir.ui.view">
+			<field name="name">puzzle.part.form</field>
+			<field name="model">puzzle.part</field>
+			<field name="arch" type="xml">
+				<form string="Parts">
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="solver_id"/>
+							<field name="test_id"/>
+							<field name="solved"/>
+						</group>
+						<group>
+							<field name="sequence"/>
+							<field name="alphabet"/>
+							<field name="key"/>
+							<field name="code"/>
+						</group>
+					</group>
+					<notebook>
+						<page name="origin" string="Origin">
+							<field name="text_origin"/>
+						</page>
+						<page name="encrypted" string="Encrypted">
+							<field name="text_encrypted"/>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<record id="puzzle_part_tree" model="ir.ui.view">
+			<field name="name">puzzle.part.tree</field>
+			<field name="model">puzzle.part</field>
+			<field name="arch" type="xml">
+				<tree string="Parts">
+					<field name="solver_id"/>
+					<field name="name"/>
+					<field name="test_id"/>
+					<field name="solved"/>
+				</tree>
+			</field>
+		</record>
+		<record id="puzzle_part_search" model="ir.ui.view">
+			<field name="name">puzzle.part.search</field>
+			<field name="model">puzzle.part</field>
+			<field name="arch" type="xml">
+				<search string="Parts">
+					<field name="name"/>
+					<field name="solver_id"/>
+					<field name="test_id"/>
+				</search>
+			</field>
+		</record>
+
+		<record id="puzzle_part_test_form" model="ir.ui.view">
+			<field name="name">puzzle.part.test.form</field>
+			<field name="model">puzzle.part.test</field>
+			<field name="arch" type="xml">
+				<form string="Part tests">
+					<group>
+						<field name="name"/>
+						<field name="question"/>
+						<field name="answer"/>
+					</group>
+				</form>
+			</field>
+		</record>
+		<record id="puzzle_part_test_tree" model="ir.ui.view">
+			<field name="name">puzzle.part.test.tree</field>
+			<field name="model">puzzle.part.test</field>
+			<field name="arch" type="xml">
+				<tree string="Part tests">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="puzzle_part_test_search" model="ir.ui.view">
+			<field name="name">puzzle.part.test.search</field>
+			<field name="model">puzzle.part.test</field>
+			<field name="arch" type="xml">
+				<search string="Part tests">
+					<field name="name"/>
+				</search>
+			</field>
+		</record>
+	</data>
+</odoo>

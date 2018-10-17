@@ -1,0 +1,31 @@
+body{
+	color: #FFF;
+	background-color: #000;
+}
+footer{
+	display: none!important;
+}
+
+.color_max{
+	color: #ef7204;
+}
+
+.color_error{
+	color: #FFF;
+	font-size: 15px;
+}
+
+p{
+	font-size: 20px;
+}
+
+.btn-max{
+	background-color: #FFF!important;
+	border-color: #FFF!important;
+	color: #000!important;
+}
+
+#input_password{
+	max-width: 435px;
+	margin:	auto;
+}

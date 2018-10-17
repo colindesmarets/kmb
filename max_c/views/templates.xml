@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="max.pretest" name="Max Pretest">
+		<t t-call="website.layout">
+			<div class="wrap">
+				<div class="container">
+					<h1 class="text-center">Hello <span class="color_max">Maxime</span>.<br/>I want to play a game.</h1>
+					<div class="row mt64">
+						<div class="col-xs-12 text-center">
+							<p>
+								Please enter the <span class="color_max">password</span> that was given to you
+							</p>
+						</div>
+					</div>
+					<div class="row mt16">
+						<div class="col-xs-12 text-center">
+							<div>
+								<form id="pretest" action="/CYSTR_" method="post" class="js_website_submit_form">
+			               			<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+									<input type="text" name="answer" required="True" class="form-control" id="input_password"/>
+									<button type="submit" class="btn-primary btn-max mt16"><b>SUBMIT - At your own risks..</b></button>
+								</form>
+							</div>
+							<p t-if="error != ''" class="mt8">
+								<span class="color_error" t-esc="error"/>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<template id="max.test" name="Max Test">
+		<t t-call="website.layout">
+			<div class="wrap">
+				<div class="container">
+					<h1 class="text-center">
+						Nice you <span class="color_max">solved</span> it !
+					</h1>
+					<h3 class="text-center">
+						I hope you liked this little trick. I promise there won't be anymore like that !
+						<br/>
+						Now if you want: let's see if you can solve this one.
+					</h3>
+					<t t-foreach="solver_id.part_ids" t-as="part">
+						<div class="row mt32">
+							<div class="col-xs-8 text-left">
+								<div t-if="not part.solved">
+									<p t-field="part.text_encrypted"/>
+								</div>
+								<div t-if="part.solved">
+									<p>
+										<span t-field="part.code"/><br/>
+										<span t-field="part.text_origin"/>
+									</p>
+								</div>
+							</div>
+							<div class="col-xs-4 text-left">
+								<div>
+									<t t-if="part.solved">
+										<br/>
+									</t>
+									<a t-att-href="'/CYSTR/'+str(part.test_id.id)" target="_blank" t-field="part.test_id.name"/><br/>
+									<t t-if="part.solved">
+										---> Done
+									</t>
+								</div>
+							</div>
+						</div>
+					</t>
+					<div class="row mt32">
+						<div class="col-xs-12 text-center">
+							<div>
+								<form id="test" action="/CYSTR" method="post" class="js_website_submit_form">
+			               			<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+			               			<span class="color_max">Solution :</span>
+									<input type="text" name="answer" required="True" class="form-control" id="input_password"/>
+									<button type="submit" class="btn-primary btn-max mt16"><b>- SUBMIT -</b></button>
+								</form>
+							</div>
+							<p t-if="error != ''" class="mt8">
+								<span class="color_error" t-esc="error"/>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+</odoo>

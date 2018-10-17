@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem name="PuzzleSolver" id="menu_puzzlesolver"/>
+		<menuitem name="Puzzle" id="menu_puzzle" parent="menu_puzzlesolver"/>
+
+		<record id="action_puzzle_solvers" model="ir.actions.act_window">
+            <field name="name">Puzzle Solvers</field>
+            <field name="res_model">puzzle.solver</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Puzzles" id="menu_puzzle_solver" parent="menu_puzzle" action="action_puzzle_solvers" sequence="10"/>
+
+		<record id="action_puzzle_parts" model="ir.actions.act_window">
+            <field name="name">Puzzle Parts</field>
+            <field name="res_model">puzzle.part</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Parts" id="menu_puzzle_parts" parent="menu_puzzle" action="action_puzzle_parts" sequence="20"/>
+
+		<record id="action_puzzle_part_tests" model="ir.actions.act_window">
+            <field name="name">Puzzle Parts Tests</field>
+            <field name="res_model">puzzle.part.test</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Part tests" id="menu_puzzle_part_tests" parent="menu_puzzle" action="action_puzzle_part_tests" sequence="30"/>
+	</data>
+</odoo>
