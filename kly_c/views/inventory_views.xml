@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="res_partner_story_form" model="ir.ui.view">
+			<field name="name">res.partner.story.form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//notebook" position="inside">
+					<page name="stories" string="Stories">
+						<field name="session_ids">
+							<tree>
+								<field name="date"/>
+							</tree>
+						</field>
+					</page>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="inventory_inventory_form" model="ir.ui.view">
+			<field name="name">inventory.inventory.form</field>
+			<field name="model">inventory.inventory</field>
+			<field name="arch" type="xml">
+				<form string="Inventory">
+					<group>
+						<field name="name"/>
+					</group>
+					<notebook>
+						<page name="items" string="Items">
+							<field name="item_ids"/>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<record id="inventory_inventory_tree" model="ir.ui.view">
+			<field name="name">inventory.inventory.tree</field>
+			<field name="model">inventory.inventory</field>
+			<field name="arch" type="xml">
+				<tree string="Inventory">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="inventory_item_form" model="ir.ui.view">
+			<field name="name">inventory.item.form</field>
+			<field name="model">inventory.item</field>
+			<field name="arch" type="xml">
+				<form string="Item">
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="code"/>
+						</group>
+						<group>
+							<field name="inventory_id"/>
+						</group>
+					</group>
+				</form>
+			</field>
+		</record>
+		<record id="inventory_item_tree" model="ir.ui.view">
+			<field name="name">inventory.item.tree</field>
+			<field name="model">inventory.item</field>
+			<field name="arch" type="xml">
+				<tree string="Item">
+					<field name="name"/>
+					<field name="code"/>
+				</tree>
+			</field>
+		</record>
+		<record id="inventory_item_search" model="ir.ui.view">
+			<field name="name">inventory.item.search</field>
+			<field name="model">inventory.item</field>
+			<field name="arch" type="xml">
+				<search string="Item">
+					<group name="group_by" expand="0">
+						<filter name="group_inventory" string="Inventory" context="{'group_by': 'inventory_id'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record id="story_story_form" model="ir.ui.view">
+			<field name="name">story.story.form</field>
+			<field name="model">story.story</field>
+			<field name="arch" type="xml">
+				<form string="Story">
+					<group>
+						<field name="name"/>
+					</group>
+					<notebook>
+						<page name="chapters" string="Chapters">
+							<field name="chapter_ids"/>
+						</page>
+						<page name="sessions" string="Sessions">
+							<field name="session_ids"/>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<record id="story_story_tree" model="ir.ui.view">
+			<field name="name">story.story.tree</field>
+			<field name="model">story.story</field>
+			<field name="arch" type="xml">
+				<tree string="Story">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="story_session_form" model="ir.ui.view">
+			<field name="name">story.session.form</field>
+			<field name="model">story.session</field>
+			<field name="arch" type="xml">
+				<form string="Session">
+					<group>
+						<group>
+							<field name="partner_id"/>
+							<field name="story_id"/>
+							<field name="inventory_id"/>
+						</group>
+						<group>
+							<field name="date"/>
+							<field name="code"/>
+						</group>
+					</group>
+				</form>
+			</field>
+		</record>
+		<record id="story_session_tree" model="ir.ui.view">
+			<field name="name">story.session.tree</field>
+			<field name="model">story.session</field>
+			<field name="arch" type="xml">
+				<tree string="Session">
+					<field name="date"/>
+					<field name="partner_id"/>
+					<field name="story_id"/>
+				</tree>
+			</field>
+		</record>
+
+		
+		<record id="storychapter_form" model="ir.ui.view">
+			<field name="name">story.chapter.form</field>
+			<field name="model">story.chapter</field>
+			<field name="arch" type="xml">
+				<form string="Chapter">
+					<group>
+						<field name="name"/>
+						<field name="sequence"/>
+						<field name="story_id"/>
+					</group>
+					<notebook>
+						<page name="events" string="Events">
+							<field name="event_ids"/>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<record id="story_chapter_tree" model="ir.ui.view">
+			<field name="name">story.chapter.tree</field>
+			<field name="model">story.chapter</field>
+			<field name="arch" type="xml">
+				<tree string="Chapter">
+					<field name="story_id"/>
+					<field name="sequence"/>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="story_event_form" model="ir.ui.view">
+			<field name="name">story.event.form</field>
+			<field name="model">story.event</field>
+			<field name="arch" type="xml">
+				<form string="Event">
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="chapter_id"/>
+							<field name="sequence"/>
+						</group>
+						<group>
+							<field name="has_question"/>
+							<field name="question_id"/>
+						</group>
+					</group>
+					<notebook>
+						<page name="text" string="Text">
+							<field name="text"/>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<record id="story_event_tree" model="ir.ui.view">
+			<field name="name">story.event.tree</field>
+			<field name="model">story.event</field>
+			<field name="arch" type="xml">
+				<tree string="Event">
+					<field name="name"/>
+					<field name="chapter_id"/>
+					<field name="has_question"/>
+					<field name="question_id"/>
+					<field name="sequence"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="story_question_form" model="ir.ui.view">
+			<field name="name">story.question.form</field>
+			<field name="model">story.question</field>
+			<field name="arch" type="xml">
+				<form string="Question">
+					<group>
+						<field name="name"/>
+					</group>
+					<notebook>
+						<page name="answers" string="Answers">
+							<field name="answer_ids"/>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<record id="story_question_tree" model="ir.ui.view">
+			<field name="name">story.question.tree</field>
+			<field name="model">story.question</field>
+			<field name="arch" type="xml">
+				<tree string="Question">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="story_answer_form" model="ir.ui.view">
+			<field name="name">story.answer.form</field>
+			<field name="model">story.answer</field>
+			<field name="arch" type="xml">
+				<form string="Answer">
+					<group>
+						<field name="name"/>
+						<field name="question_id"/>
+					</group>
+				</form>
+			</field>
+		</record>
+		<record id="story_answer_tree" model="ir.ui.view">
+			<field name="name">story.answer.tree</field>
+			<field name="model">story.answer</field>
+			<field name="arch" type="xml">
+				<tree string="Answer">
+					<field name="name"/>
+					<field name="question_id"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>

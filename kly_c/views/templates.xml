@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="kly.pretest" name="Kly Pretest">
+		<t t-call="website.layout">
+			<div class="wrap">
+				<div class="container">
+					<h1 class="text-center">Hello <span class="color_kly">Kelly</span>.<br/>I want to play a game.</h1>
+					<h1 class="text-center">Only a TRUE web designer can spot the correct <a class="hidden_link" href="/TSRGIST3000">link</a> in this page.<br/>&lt;--Are you qualified ?--&gt;</h1>
+					<t t-set="link1" t-value="'&lt;a link=\'/maybe\'&gt;Is this the link you are looking for ?&lt;/a&gt;'"/>
+					<t t-set="link2" t-value="'&lt;link href=\'/correct\'&gt;Pretty sure this one is ok&lt;/link&gt;'"/>
+					<t t-set="link3" t-value="'&lt;a hrf=\'/Zelda\'&gt;Link is not the princess !&lt;/a&gt;'"/>
+					<t t-set="link4" t-value="'&lt;url href=\'/Unicorns\'&gt;Unicorns poop candy floss and it\'s awsome !&lt;/url&gt;'"/>
+					<t t-set="link5" t-value="'&lt;h1&gt;42&lt;/h1&gt;'"/>
+					<t t-set="link6" t-value="'&lt;a href=\'/ninja\'&gt;peek-a-boo !&lt;/a&gt;'"/>
+					<div id="fake_link1" class="fake_link">
+						<a href="#">
+							<span t-esc="link1"/>
+						</a>
+					</div>
+					<div id="fake_link2" class="fake_link">
+						<a href="#">
+							<span t-esc="link2"/>
+						</a>
+					</div>
+					<div id="fake_link3" class="fake_link">
+						<a href="#">
+							<span t-esc="link3"/>
+						</a>
+					</div>
+					<div id="fake_link4" class="fake_link">
+						<a href="#">
+							<span t-esc="link4"/>
+						</a>
+					</div>
+					<div id="fake_link5" class="fake_link">
+						<a href="#">
+							<span t-esc="link5"/>
+						</a>
+					</div>
+					<div id="fake_link6" class="fake_link">
+						<a href="#">
+							<span t-esc="link6"/>
+						</a>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<template id="kly.home" name="Kly Home">
+        <t t-call="website.layout">
+            <div class="wrap">
+                <div class="container">
+                	<h1 class="text-center mt32">
+	                	Nice! You really proved your <span class="color_kly">value</span> there.<br/>So here's my reward:
+	                </h1>
+	                <h1 class="text-center mt64">
+						The <span class="color_kly">best</span> story teller you will ever see in your life !
+					</h1>
+					<h1 class="text-center mt32">
+						Based on the imagination engine,<br/>
+						<span class="color_kly">T</span>he <span class="color_kly">S</span>uper <span class="color_kly">R</span>ealistic <span class="color_kly">G</span>liter <span class="color_kly">I</span>nterractive <span class="color_kly">S</span>tory <span class="color_kly">T</span>eller <span class="color_kly">3</span>000 <span class="color_kly">--KlyVersion</span>
+					</h1>
+					<h4 id="disclaimer">
+						DISCLAIMER:<br/>
+						Any resemblance to real persons, living or dead, is purely <span class="color_kly">intentional</span> of course.
+					</h4>
+					<h1 class="text-center mt64">
+						<a id="btn_play" class="color_kly" href="/TSRGIST3000/new"><b>PLAY</b></a>
+					</h1>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="kly.story" name="Kly Story">
+        <t t-call="website.layout">
+            <div class="wrap">
+                <div class="container">
+                	<h1 class="text-center">
+                		<span class="color_kly" t-field="chapter_id.name"/><br/>
+                	</h1>
+                	<p class="event_text" t-field="event_id.text"/>
+					<h1 class="text-right btn_play">
+						<a id="btn_play" class="color_kly" href="#"><b>NEXT</b></a>
+					</h1>
+					<h4 id="disclaimer">
+						<span class="color_kly" t-field="session_id.inventory_id.name"/>
+						<ul class="mt16">
+							<t t-foreach="session_id.inventory_id.item_ids" t-as="item">
+								<li class="item_inventory">
+									<span class="inv_color_kly" t-field="item.name"/>
+								</li>
+							</t>
+						</ul>
+					</h4>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

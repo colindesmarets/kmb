@@ -1,0 +1,91 @@
+Only a TRUE web designer can spot the link(vrai) in this page. Are you qualified ? LINK(faux)
+
+
+Hello there, i see that you're good so here's my reward: 
+The grettest story teller you'll ever see in your life.
+Based on the imagination engine.
+The Super Realistic Gliter Interractive Story Teller 3000 --KlyVersion
+
+DISCLAIMER:
+Any resemblance to real persons, living or dead, is purely intentional of course.
+
+
+PLAY
+
+----Starting inventory----
+fancy pyjama with flamingos
+Canon EF-M 18-55mm f/3.5-5.6 IS STM
+
+
+NIGHT 1
+Here you are: lying in bed next to your beloved partner.
+Say, what's his name again ?
+	-> input != Aiki -> Hmmm don't lie please, we all know it's name is Aiki
+	-> input = Aiki -> Wow you actually passed the first question, I'm surprised
+
+Let me start again then: 
+Here you are, lying next to Aiki, trying to sleep, closing your eyes and ...WAIT ?! Don't actually close them or we'll be in trouble as i didn't record an audio version...
+
+OK for the last time ! Let's do this right.
+So you're in bed with Aiki, feeling sleepy and so on, blablabla when SUDDENLY you here strange noises from the basement 
+(yeah you have a basement in this story because you're rich !)
+
+--Can i make ellipses ? Hmmm of course i can, i'm actually godlike here--
+Now standing on the last step of your basement stairs you turn on the light and...
+....BUILDING SUSPENSE....
+... Everything seems normal: Your unicorn is eating it's glitters quietly, Maxime is running in his human wheel watching another skate video on the TV, Bim Turton is sleeping in his corner and the Kaulitz brothers are still chained to the wall.
+The only thing that jumps to you is this little shinny object on the floor. 
+Do you grab it ?
+	-> Yes = add Inventory: Broadsword
+	-> No = Ok, I'll take it for you. It could be usefull.... who knows...
+
+
+Back to your room you find Aiki in the exact same spot but in a slightly diferent position (There might be some editing glitch here and there, sorry I had no budget)
+so you decide to give her a HUGE hug.
+But something's not as usual. She's a bit... cold.... Like some metal and you notice there's no breathing either so in a flash you jump off the bed and turn the lights on.
+<image montage nul d'aiki avec des yeux de robots>
+The view makes you feel : <input sentiment> 
+	-> add inventaire sentiment xxx
+In a flash she jumps on you. Your reflexes are too slow. You're on a the floor, the beast standing on your chest.
+What do you do ?
+<ajout compteur de temps> ??
+	-7. Fight for your life
+		-picked up the sword -> ---need to write this part---
+		-narrator picked it -> ---need to write this part---
+	-1. Let destiny decide your fate
+		-As the beast's maw gets closer and closer to your face your hopes fade away. Despair starts to overwhelm you. You close your eyes (again not for real, keep reading plzzzz) and await death.
+		 A few seconds later as nothing happened you decide to open them because .... well you're bored.... and you see her eating a slice of bread that was on your shoulder. 
+		 Oh yes i forgot to tell you it droped on you from the basement's ceiling. --Woops--
+		 So this was the real Aiki all along, she probably evolved during your trip to the basement. Well that's cool.
+	-12. Nothing, existence is meaningless in an infinite universe. 
+		->if not picked before -> Everything's made of emptyness. Nothing we do have consequences in the long run. Dinosaurs were massive. Genders are just words. Vaccines are useless. Raptor Jesus. We're all made of stardust.
+		->if picked before -> ...
+	-4. Attempt to make dog noises to fool the beast.
+		->Im suuuuuuure that your acting is really good but I don't think this is a smart idea.
+
+---random fact used as a transition because i can't find one---
+By the way did you know that the trebuchet is a compound machine that makes use of the mechanical advantage of a lever to throw a projectile. 
+They are typically large constructions (up to 30 meters (100 ft) in height or more) made primarily of wood, usually reinforced with metal, leather, rope, and other materials. 
+They are usually immobile and must be assembled on-site, possibly making use of local lumber with only key parts brought with the army to the site of the siege or battle.
+
+
+ENDING
+As you were about to slip back into your bed the sky turns dark, the clouds ignite themselves. 
+You can feel the electricity in the air around you. This is the time. The final boss is close. The tension is unbearable.
+The phone starts to ring.
+next page -> btns with voice messages from us saying happy birthday to Kelly
+
+
+----> Max gets a code
+----> Send an email
+
+
+
+martin
+max
+aurélie
+romain
+kathleen
+baptiste
+laura
+anais

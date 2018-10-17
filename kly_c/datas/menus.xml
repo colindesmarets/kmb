@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem name="StoryTeller" id="menu_storyteller"/>
+        <menuitem name="Session" id="menu_session" parent="kly.menu_storyteller"/>
+        <menuitem name="Inventory" id="menu_inventory" parent="kly.menu_storyteller"/>
+        <menuitem name="Story" id="menu_story" parent="kly.menu_storyteller"/>
+
+		<record id="action_sessions" model="ir.actions.act_window">
+            <field name="name">Sessions</field>
+            <field name="res_model">story.session</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Sessions" id="menu_session_session" parent="menu_session" action="action_sessions"/>
+
+		<record id="action_inventories" model="ir.actions.act_window">
+            <field name="name">Inventories</field>
+            <field name="res_model">inventory.inventory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Inventories" id="menu_inventory_inventory" parent="menu_inventory" action="action_inventories"/>
+
+		<record id="action_items" model="ir.actions.act_window">
+            <field name="name">Items</field>
+            <field name="res_model">inventory.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Items" id="menu_inventory_item" parent="menu_inventory" action="action_items"/>
+
+		<record id="action_story" model="ir.actions.act_window">
+            <field name="name">Stories</field>
+            <field name="res_model">story.story</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Stories" id="menu_story_story" parent="menu_story" action="action_story"/>
+
+		<record id="action_chapter" model="ir.actions.act_window">
+            <field name="name">Chapters</field>
+            <field name="res_model">story.chapter</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Chapters" id="menu_story_chapter" parent="menu_story" action="action_chapter"/>
+
+		<record id="action_event" model="ir.actions.act_window">
+            <field name="name">Events</field>
+            <field name="res_model">story.event</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Events" id="menu_story_event" parent="menu_story" action="action_event"/>
+
+		<record id="action_question" model="ir.actions.act_window">
+            <field name="name">Questions</field>
+            <field name="res_model">story.question</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Question" id="menu_story_question" parent="menu_story" action="action_question"/>
+
+		<record id="action_answer" model="ir.actions.act_window">
+            <field name="name">Answers</field>
+            <field name="res_model">story.answer</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Answers" id="menu_story_answer" parent="menu_story" action="action_answer"/>
+
+    </data>
+</odoo>
