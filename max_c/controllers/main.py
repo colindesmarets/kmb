@@ -44,7 +44,7 @@ class maxController(http.Controller):
 		}
 		if kw:
 			if 'answer' in kw.keys():
-				if kw['answer'] == solver_id.solution:
+				if kw['answer'].lower() == solver_id.solution.lower():
 					solver_id.solved = True
 					return request.render("max_c.posttest", values)
 				else:
@@ -70,10 +70,14 @@ class maxController(http.Controller):
 					values = {
 						'solver_id': solver_id,
 					}
-					return request.redirect('max_c.test', values)
+					return request.redirect('/CYSTR_main')
 				else:
 					if test_id.name == "Test 05":
 						values['error'] = "va_mal"
+					elif test_id.name == "Test 06":
+						values['error'] = "wow"
+					elif test_id.name == "Test 02":
+						values['error'] = "glouglou"
 					else:
 						values['error'] = "wrong answer"
 
@@ -81,7 +85,14 @@ class maxController(http.Controller):
 
 	@http.route(['/CYSTR_solved'], type='http', auth='public', website=True)
 	def CYSTR_solved(self, **kw):
-		solver_id = request.env['puzzle.solver'].search([('password','=',str(kw['answer']))])
+		solver_id = None
+		if kw:
+			if 'answer' in kw.keys():
+				solver_id = request.env['puzzle.solver'].search([('password','=',str(kw['answer']))])
+			else:
+				solver_id = request.env['puzzle.solver'].search([('password','=',"le mot de passe qui vous a été donné")])
+		else:
+			solver_id = request.env['puzzle.solver'].search([('password','=',"le mot de passe qui vous a été donné")])
 		values = {
 			'solver_id': solver_id,
 		}
