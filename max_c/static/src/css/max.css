@@ -5,6 +5,12 @@ body{
 footer{
 	display: none!important;
 }
+header{
+	display: none!important;
+}
+.form-group.field-db{
+	display: none!important;
+}
 
 .color_max{
 	color: #ef7204;
@@ -16,7 +22,7 @@ footer{
 }
 
 p{
-	font-size: 20px;
+	font-size: 17px;
 }
 p.text_justify{
 	text-align: justify;

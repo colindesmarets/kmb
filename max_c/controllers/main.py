@@ -4,7 +4,7 @@ from odoo.http import request
 from odoo import http
 
 class maxController(http.Controller):
-	@http.route(['/CYSTR_'], type='http', auth='user', website=True)
+	@http.route(['/CYSTR_start'], type='http', auth='public', website=True)
 	def CYSTR_(self, **kw):
 		error = ""
 		if kw:
@@ -12,7 +12,7 @@ class maxController(http.Controller):
 				solver_id = request.env['puzzle.solver'].search([('password','=',str(kw['answer']))])
 				if solver_id:
 					print("---->")
-					return request.redirect("/CYSTR")
+					return request.redirect("/CYSTR_main")
 				else:
 					solver_id = request.env['puzzle.solver'].search([('password','=',"le mot de passe qui vous a été donné")])
 					if solver_id:
@@ -36,7 +36,7 @@ class maxController(http.Controller):
 							error = "Tapez juste ''le mot de passe qui vous a été donné'' sans les guillemets..."
 		return request.render("max_c.pretest", {'error': error})
 
-	@http.route(['/CYSTR'], type='http', auth='user', website=True)
+	@http.route(['/CYSTR_main'], type='http', auth='public', website=True)
 	def CYSTR(self, **kw):
 		solver_id = request.env['puzzle.solver'].search([('password','=','le mot de passe qui vous a été donné')])		
 		values = {
@@ -51,24 +51,41 @@ class maxController(http.Controller):
 					values['error'] = "wrong solution"
 		return request.render("max_c.test", values)
 
-	@http.route(['/CYSTR/<int:test>'], type="http", auth="user", website=True)
+	@http.route(['/CYSTR/<int:test>'], type="http", auth="public", website=True)
 	def CYSTR_test(self, test, **kw):
 		if not test:
-			return request.redirect('/CYSTR')
+			return request.redirect('/CYSTR_main')
 		test_id = request.env['puzzle.part.test'].search([('id','=', int(test))])
+		part_id = request.env['puzzle.part'].search([('test_id','=',test_id.id)])
 		values = {
 			'test_id': test_id,
+			'part_id': part_id,
 		}
 		if kw:
 			if 'answer' in kw.keys():
 				if kw['answer'].lower() == test_id.answer.lower():
 					part_id = request.env['puzzle.part'].search([('test_id','=',test_id.id)])
 					part_id.solved = True
+					solver_id = request.env['puzzle.solver'].search([('password','=','le mot de passe qui vous a été donné')])		
+					values = {
+						'solver_id': solver_id,
+					}
+					return request.redirect('max_c.test', values)
 				else:
-					values['error'] = "wrong answer"
+					if test_id.name == "Test 05":
+						values['error'] = "va_mal"
+					else:
+						values['error'] = "wrong answer"
 
 		return request.render("max_c.part_test", values)
 
-	@http.route(['/CYSTR_solved'], type='http', auth='user', website=True)
+	@http.route(['/CYSTR_solved'], type='http', auth='public', website=True)
 	def CYSTR_solved(self, **kw):
-		return request.render("max_c.posttest")
+		solver_id = request.env['puzzle.solver'].search([('password','=',str(kw['answer']))])
+		values = {
+			'solver_id': solver_id,
+		}
+		if solver_id.solved:
+			return request.render("max_c.posttest")
+		else:
+			return request.render("max_c.test", values)
