@@ -2,9 +2,9 @@
 <odoo>
 	<data>
 		<menuitem name="StoryTeller" id="menu_storyteller"/>
-        <menuitem name="Session" id="menu_session" parent="kly.menu_storyteller"/>
-        <menuitem name="Inventory" id="menu_inventory" parent="kly.menu_storyteller"/>
-        <menuitem name="Story" id="menu_story" parent="kly.menu_storyteller"/>
+        <menuitem name="Session" id="menu_session" parent="kly_c.menu_storyteller"/>
+        <menuitem name="Inventory" id="menu_inventory" parent="kly_c.menu_storyteller"/>
+        <menuitem name="Story" id="menu_story" parent="kly_c.menu_storyteller"/>
 
 		<record id="action_sessions" model="ir.actions.act_window">
             <field name="name">Sessions</field>

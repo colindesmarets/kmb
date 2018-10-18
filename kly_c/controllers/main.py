@@ -6,11 +6,11 @@ from odoo import http
 class klyController(http.Controller):
 	@http.route(['/TSRGIST3000_'], type='http', auth='user', website=True)
 	def TSRGIST3000_(self, **kw):
-		return request.render("kly.pretest")
+		return request.render("kly_c.pretest")
 
 	@http.route(['/TSRGIST3000'],type='http', auth='user', website=True)
 	def TSRGIST3000(self, **kw):
-		return request.render("kly.home")
+		return request.render("kly_c.home")
 
 	@http.route(['/TSRGIST3000/new'],type='http', auth='user', website=True)
 	def TSRGIST3000_new(self, **kw):
@@ -56,5 +56,5 @@ class klyController(http.Controller):
 			'chapter_id': chapter_id,
 			'event_id': chapter_id.event_ids.filtered(lambda e:e.sequence == session_id.event),
 		}
-		return request.render("kly.story", values)
+		return request.render("kly_c.story", values)
 

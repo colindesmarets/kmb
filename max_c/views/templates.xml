@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<template id="max.pretest" name="Max Pretest">
+	<template id="max_c.pretest" name="Max Pretest">
 		<t t-call="website.layout">
 			<div class="wrap">
 				<div class="container">
-					<h1 class="text-center">Hello <span class="color_max">Maxime</span>.<br/>I want to play a game.</h1>
+					<h1 class="text-center">Bonjour <span class="color_max">Maxime</span>.<br/>Jouons à un jeu.</h1>
 					<div class="row mt64">
 						<div class="col-xs-12 text-center">
 							<p>
-								Please enter the <span class="color_max">password</span> that was given to you
+								Veuillez entrer le <span class="color_max">mot de passe</span> qui vous a été donné
 							</p>
 						</div>
 					</div>
@@ -18,7 +18,7 @@
 								<form id="pretest" action="/CYSTR_" method="post" class="js_website_submit_form">
 			               			<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 									<input type="text" name="answer" required="True" class="form-control" id="input_password"/>
-									<button type="submit" class="btn-primary btn-max mt16"><b>SUBMIT - At your own risks..</b></button>
+									<button type="submit" class="btn-primary btn-max mt16"><b>Valider - À vos risques et périls..</b></button>
 								</form>
 							</div>
 							<p t-if="error != ''" class="mt8">
@@ -31,26 +31,26 @@
 		</t>
 	</template>
 
-	<template id="max.test" name="Max Test">
+	<template id="max_c.test" name="Max Test">
 		<t t-call="website.layout">
 			<div class="wrap">
 				<div class="container">
 					<h1 class="text-center">
-						Nice you <span class="color_max">solved</span> it !
+						<span class="color_max">Félicitations</span> vous avez résolu <span class="color_max">l'intro</span> !
 					</h1>
 					<h3 class="text-center">
-						I hope you liked this little trick. I promise there won't be anymore like that !
+						J'espère que vous avez kiffé cette petite astuce. Promis c'était la dernière fois !
 						<br/>
-						Now if you want: let's see if you can solve this one.
+						Maintenant, si vous le voulez bien : Voyons si vous êtes capable de resoudre ceci.
 					</h3>
 					<t t-foreach="solver_id.part_ids" t-as="part">
-						<div class="row mt32">
+						<div class="row mt64">
 							<div class="col-xs-8 text-left">
 								<div t-if="not part.solved">
 									<p t-field="part.text_encrypted"/>
 								</div>
 								<div t-if="part.solved">
-									<p>
+									<p class="text_justify;">
 										<span t-field="part.code"/><br/>
 										<span t-field="part.text_origin"/>
 									</p>
@@ -61,9 +61,9 @@
 									<t t-if="part.solved">
 										<br/>
 									</t>
-									<a t-att-href="'/CYSTR/'+str(part.test_id.id)" target="_blank" t-field="part.test_id.name"/><br/>
+									<a t-att-href="'/CYSTR/'+str(part.test_id.id)" t-field="part.test_id.name"/><br/>
 									<t t-if="part.solved">
-										---> Done
+										---> Résolu
 									</t>
 								</div>
 							</div>
@@ -71,19 +71,59 @@
 					</t>
 					<div class="row mt32">
 						<div class="col-xs-12 text-center">
-							<div>
+							<div t-if="not solver_id.solved">
 								<form id="test" action="/CYSTR" method="post" class="js_website_submit_form">
 			               			<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 			               			<span class="color_max">Solution :</span>
 									<input type="text" name="answer" required="True" class="form-control" id="input_password"/>
-									<button type="submit" class="btn-primary btn-max mt16"><b>- SUBMIT -</b></button>
+									<button type="submit" class="btn-primary btn-max mt16"><b>- Valider -</b></button>
 								</form>
 							</div>
-							<p t-if="error != ''" class="mt8">
-								<span class="color_error" t-esc="error"/>
+							<div t-if="solver_id.solved">
+								<a href=""
+							</div>
+							<p t-if="error == 'wrong solution'" class="mt8">
+								<span class="color_error">Oups, c'est pas ça</span>
 							</p>
 						</div>
 					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<template id="max_c.part_test" name="Max post Test">
+		<t t-call="website.layout">
+			<div class="wrap">
+				<div class="container">
+					<h3 class="text-center">
+						<span t-field="test_id.name"/>
+					</h3>
+					<h3 class="text_justify">
+						<span t-field="test_id.question"/>
+					</h3>
+					<form id="part_test" t-att-action="'/CYSTR/'+str(test_id.id)" method="post" class="js_website_submit_form">
+               			<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+               			<span class="color_max">Votre réponse :</span>
+						<input type="text" name="answer" required="True" class="form-control" id="input_answer"/>
+						<button type="submit" class="btn-primary btn-max mt16"><b>- Valider -</b></button>
+						<span t-if="error == 'wrong answer'" class="color_error">
+							Wrong answer
+						</span>
+					</form>
+					<a href="/CYSTR">Retour</a>
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<template id="max_c.posttest" name="Max post Test">
+		<t t-call="website.layout">
+			<div class="wrap">
+				<div class="container">
+					<h1 class="text-center">
+						You <span class="color_max">WON</span> !
+					</h1>
 				</div>
 			</div>
 		</t>

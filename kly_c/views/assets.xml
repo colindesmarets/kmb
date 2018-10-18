@@ -4,7 +4,7 @@
 		<template id="assets_frontend" inherit_id="web.assets_frontend" name="Auth Assets">
             <xpath expr="." position="inside">
                 <!-- <script type="text/javascript" src="/auth_signup/static/src/js/signup.js"></script> -->
-				<link rel="stylesheet" href="/kly/static/src/css/kly.css"/>
+				<link rel="stylesheet" href="/kly_c/static/src/css/kly.css"/>
 			</xpath>
 		</template>
 	</data>

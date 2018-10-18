@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<template id="kly.pretest" name="Kly Pretest">
+	<template id="kly_c.pretest" name="Kly Pretest">
 		<t t-call="website.layout">
 			<div class="wrap">
 				<div class="container">
@@ -47,7 +47,7 @@
 		</t>
 	</template>
 
-	<template id="kly.home" name="Kly Home">
+	<template id="kly_c.home" name="Kly Home">
         <t t-call="website.layout">
             <div class="wrap">
                 <div class="container">
@@ -73,7 +73,7 @@
         </t>
     </template>
 
-    <template id="kly.story" name="Kly Story">
+    <template id="kly_c.story" name="Kly Story">
         <t t-call="website.layout">
             <div class="wrap">
                 <div class="container">

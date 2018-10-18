@@ -14,32 +14,61 @@ class maxController(http.Controller):
 					print("---->")
 					return request.redirect("/CYSTR")
 				else:
-					solver_id = request.env['puzzle.solver'].search([('password','=','the password that was given to you')])
+					solver_id = request.env['puzzle.solver'].search([('password','=',"le mot de passe qui vous a été donné")])
 					if solver_id:
 						n = solver_id.login_tries + 1
 						solver_id.login_tries = n
 						if n == 1:
-							error = "1st mistake - I'm a bit disapointed.. thought you were smarter"
+							error = "1ère erreur - Je suis un peu perplexe.. Je vous croyais meilleur"
 						elif n == 2:
-							error = "2nd mistake - I placed a curse on your family"
+							error = "2ème erreur - Je viens de maudir toute votre famille"
 						elif n == 3:
-							error = "And a 3rd one - Ok you definitely lost all my respect now"
+							error = "Et une troisème ! - Ok vous venez d'officiellement perdre tout mon respect"
 						elif n == 4:
-							error = "Please stop being wrong I have no more custom messages to put here"
+							error = "S'il vous plait arrêtez d'être mauvais, je ne sais plus quoi dire"
 						elif n == 5:
 							error = "..........."
 						elif n == 6:
-							error = "Wow you actually managed to make " + str(n) + " mistakes"
+							error = "Wow vous avez quand même réussi à faire " + str(n) + " erreurs. Pas mal !"
 						elif n == 7:
 							error = "...........OK"
 						else:
-							error = "Just type 'the password that was given to you' without the quotes jeez"
-		return request.render("max.pretest", {'error': error})
+							error = "Tapez juste ''le mot de passe qui vous a été donné'' sans les guillemets..."
+		return request.render("max_c.pretest", {'error': error})
 
 	@http.route(['/CYSTR'], type='http', auth='user', website=True)
 	def CYSTR(self, **kw):
-		solver_id = request.env['puzzle.solver'].search([('password','=','the password that was given to you')])
+		solver_id = request.env['puzzle.solver'].search([('password','=','le mot de passe qui vous a été donné')])		
 		values = {
 			'solver_id': solver_id,
 		}
-		return request.render("max.test", values)
+		if kw:
+			if 'answer' in kw.keys():
+				if kw['answer'] == solver_id.solution:
+					solver_id.solved = True
+					return request.render("max_c.posttest", values)
+				else:
+					values['error'] = "wrong solution"
+		return request.render("max_c.test", values)
+
+	@http.route(['/CYSTR/<int:test>'], type="http", auth="user", website=True)
+	def CYSTR_test(self, test, **kw):
+		if not test:
+			return request.redirect('/CYSTR')
+		test_id = request.env['puzzle.part.test'].search([('id','=', int(test))])
+		values = {
+			'test_id': test_id,
+		}
+		if kw:
+			if 'answer' in kw.keys():
+				if kw['answer'].lower() == test_id.answer.lower():
+					part_id = request.env['puzzle.part'].search([('test_id','=',test_id.id)])
+					part_id.solved = True
+				else:
+					values['error'] = "wrong answer"
+
+		return request.render("max_c.part_test", values)
+
+	@http.route(['/CYSTR_solved'], type='http', auth='user', website=True)
+	def CYSTR_solved(self, **kw):
+		return request.render("max_c.posttest")
