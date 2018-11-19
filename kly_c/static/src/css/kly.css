@@ -11,7 +11,7 @@ footer{
 	position: absolute;
 }
 .fake_link>a{
-	color: #D61043;
+	color: #EE2E5F;
 }
 #fake_link6>a{
 	color: #000;
@@ -50,7 +50,7 @@ footer{
 }
 
 .color_kly{
-	color: #D61043;
+	color: #EE2E5F;
 	text-decoration: none;
 }
 .color_kly:hover{
@@ -62,7 +62,7 @@ footer{
 	text-decoration: none;
 }
 .inv_color_kly:hover{
-	color: #D61043;
+	color: #EE2E5F;
 	text-decoration: none;
 }
 #disclaimer{
@@ -72,8 +72,9 @@ footer{
 }
 
 #btn_play{
-	padding: 5px;
-	border: 2px solid #D61043;
+	padding: 5px!important;
+	border: 2px solid #EE2E5F!important;
+	background: none!important;
 }
 .item_inventory{
 	margin-bottom: 4px;
@@ -84,6 +85,20 @@ footer{
 	padding-left: 50px;
 	padding-right: 50px;
 }
+.question{
+	margin-top: 20px!important;
+}
+.answer{
+	margin-top: 5px!important;
+	color: #000!important;
+	margin-left: 50px!important;
+	font-size: 20px;
+}
+
 h1.btn_play{
 	margin-top: 250px;
+}
+
+div.navbar.navbar-default.navbar-static-top{
+	display: none!important;
 }

@@ -219,6 +219,7 @@
 				<form string="Question">
 					<group>
 						<field name="name"/>
+						<field name="text"/>
 					</group>
 					<notebook>
 						<page name="answers" string="Answers">
@@ -245,6 +246,7 @@
 				<form string="Answer">
 					<group>
 						<field name="name"/>
+						<field name="code"/>
 						<field name="question_id"/>
 					</group>
 				</form>

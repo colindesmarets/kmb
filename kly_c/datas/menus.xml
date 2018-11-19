@@ -70,5 +70,11 @@
         </record>
         <menuitem name="Answers" id="menu_story_answer" parent="menu_story" action="action_answer"/>
 
+        <record id="menu_TSRGIST3000" model="website.menu">
+            <field name="name">Start new game</field>
+            <field name="url">/TSRGIST3000</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">1</field>
+        </record>
     </data>
 </odoo>

@@ -51,23 +51,23 @@
         <t t-call="website.layout">
             <div class="wrap">
                 <div class="container">
-                	<h1 class="text-center mt32">
-	                	Nice! You really proved your <span class="color_kly">value</span> there.<br/>So here's my reward:
-	                </h1>
-	                <h1 class="text-center mt64">
+                	<h2 class="text-center mt32">
+	                	Hello there, I made you a little something for this <span class="color_kly">special day</span>:
+	                </h2>
+	                <h2 class="text-center mt64">
 						The <span class="color_kly">best</span> story teller you will ever see in your life !
-					</h1>
-					<h1 class="text-center mt32">
+					</h2>
+					<h2 class="text-center mt32">
 						Based on the imagination engine,<br/>
 						<span class="color_kly">T</span>he <span class="color_kly">S</span>uper <span class="color_kly">R</span>ealistic <span class="color_kly">G</span>liter <span class="color_kly">I</span>nterractive <span class="color_kly">S</span>tory <span class="color_kly">T</span>eller <span class="color_kly">3</span>000 <span class="color_kly">--KlyVersion</span>
-					</h1>
+					</h2>
 					<h4 id="disclaimer">
 						DISCLAIMER:<br/>
 						Any resemblance to real persons, living or dead, is purely <span class="color_kly">intentional</span> of course.
 					</h4>
-					<h1 class="text-center mt64">
+					<h2 class="text-center mt64">
 						<a id="btn_play" class="color_kly" href="/TSRGIST3000/new"><b>PLAY</b></a>
-					</h1>
+					</h2>
                 </div>
             </div>
         </t>
@@ -81,9 +81,47 @@
                 		<span class="color_kly" t-field="chapter_id.name"/><br/>
                 	</h1>
                 	<p class="event_text" t-field="event_id.text"/>
-					<h1 class="text-right btn_play">
-						<a id="btn_play" class="color_kly" href="#"><b>NEXT</b></a>
-					</h1>
+                	<t t-if="event_id.sequence == 3 and chapter_id.sequence == 2">
+                		<img src="/kly_c/static/src/img/aiki.jpg"/>
+                	</t>
+
+                	<div t-if="event_id.has_question">
+                		<form id="answer_question" action="/TSRGIST3000/answer" method="post">
+                			<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                			<input type="hidden" name="chapter_id" t-att-value="chapter_id.id"/>
+                			<input type="hidden" name="event_id" t-att-value="event_id.id"/>
+                			<input type="hidden" name="sess_id" t-att-value="session_id.id"/>
+
+	                		<p t-field="event_id.question_id.text" class="event_text question"/>
+
+	                		<t t-if="event_id.question_id.answer_ids">
+	                			<span class="color_kly">Possible answers:</span>
+	                			<ul>
+	                			<t t-foreach="event_id.question_id.answer_ids" t-as="answer">
+	                				<li><span class="inv_color_kly" t-field="answer.name"/></li>
+	                			</t>
+	                			</ul>
+	                		</t>
+
+	                		<span class="color_kly">Your answer ----></span> <input type="text" name="answer" class="answer" required="True"/>
+		                	<t t-if="error_answer">
+		                		<br/>
+		                		<br/>
+		                		<br/>
+		                		<span class="color_kly" t-esc="error_answer"/>
+		                	</t>
+	                		
+	                		<h1 class="text-right btn_play">
+								<button id="btn_play" type="submit" class="color_kly"><b>NEXT</b></button>
+							</h1>
+	                	</form>
+                	</div>
+                	<t t-if="not event_id.has_question">
+						<h1 class="text-right btn_play">
+							<a id="btn_play" class="color_kly" t-att-href="'/TSRGIST3000/'+str(session_id.id)+'/next'"><b>NEXT</b></a>
+						</h1>
+					</t>
 					<h4 id="disclaimer">
 						<span class="color_kly" t-field="session_id.inventory_id.name"/>
 						<ul class="mt16">

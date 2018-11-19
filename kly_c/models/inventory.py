@@ -37,6 +37,7 @@ class storySession(models.Model):
 	code = fields.Char(string="Code")
 	chapter = fields.Integer(string="Chapter", default=1)
 	event = fields.Integer(string="Event", default=1)
+	partner_name = fields.Char(string="Partner name")
 
 class storyChapter(models.Model):
 	_name = "story.chapter"
@@ -64,6 +65,7 @@ class storyQuestion(models.Model):
 	_name = "story.question"
 
 	name = fields.Char(string="Name")
+	text = fields.Text(string="Text")
 	answer_ids = fields.One2many("story.answer", "question_id", string="Answer(s)")
 	is_open = fields.Boolean(string="Is open")
 	open_answer = fields.Char(string="Answer")
@@ -72,5 +74,6 @@ class storyAnswer(models.Model):
 	_name = "story.answer"
 
 	name = fields.Char(string="Name")
+	code = fields.Char(string="Code")
 	question_id = fields.Many2one("story.question", string="Question")
 
