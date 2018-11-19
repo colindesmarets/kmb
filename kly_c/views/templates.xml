@@ -68,6 +68,11 @@
 					<h2 class="text-center mt64">
 						<a id="btn_play" class="color_kly" href="/TSRGIST3000/new"><b>PLAY</b></a>
 					</h2>
+
+					<!-- <audio controls="controls">
+						<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+						hmmm ?
+					</audio> -->
                 </div>
             </div>
         </t>
