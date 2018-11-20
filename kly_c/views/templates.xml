@@ -55,24 +55,19 @@
 	                	Hello there, I made you a little something for this <span class="color_kly">special day</span>:
 	                </h2>
 	                <h2 class="text-center mt64">
-						The <span class="color_kly">best</span> story teller you will ever see in your life !
+						The best story teller you will ever see in your life !
 					</h2>
 					<h2 class="text-center mt32">
 						Based on the imagination engine,<br/>
-						<span class="color_kly">T</span>he <span class="color_kly">S</span>uper <span class="color_kly">R</span>ealistic <span class="color_kly">G</span>liter <span class="color_kly">I</span>nterractive <span class="color_kly">S</span>tory <span class="color_kly">T</span>eller <span class="color_kly">3</span>000 <span class="color_kly">--KlyVersion</span>
+						<span class="color_kly">T</span>he <span class="color_kly">S</span>uper <span class="color_kly">R</span>ealistic <span class="color_kly">G</span>liter <span class="color_kly">I</span>nterractive <span class="color_kly">S</span>tory <span class="color_kly">T</span>eller <span class="color_kly">3</span>000
 					</h2>
-					<h4 id="disclaimer">
-						DISCLAIMER:<br/>
-						Any resemblance to real persons, living or dead, is purely <span class="color_kly">intentional</span> of course.
-					</h4>
 					<h2 class="text-center mt64">
 						<a id="btn_play" class="color_kly" href="/TSRGIST3000/new"><b>PLAY</b></a>
 					</h2>
-
-					<!-- <audio controls="controls">
-						<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
-						hmmm ?
-					</audio> -->
+					<h4 id="disclaimer" class="mt64">
+						DISCLAIMER:<br/>
+						Any resemblance to real persons, living or dead, is purely <span class="color_kly">intentional</span> of course.
+					</h4>
                 </div>
             </div>
         </t>
@@ -82,61 +77,167 @@
         <t t-call="website.layout">
             <div class="wrap">
                 <div class="container">
-                	<h1 class="text-center">
-                		<span class="color_kly" t-field="chapter_id.name"/><br/>
-                	</h1>
-                	<p class="event_text" t-field="event_id.text"/>
-                	<t t-if="event_id.sequence == 3 and chapter_id.sequence == 2">
-                		<img src="/kly_c/static/src/img/aiki.jpg"/>
-                	</t>
-
-                	<div t-if="event_id.has_question">
-                		<form id="answer_question" action="/TSRGIST3000/answer" method="post">
-                			<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-
-                			<input type="hidden" name="chapter_id" t-att-value="chapter_id.id"/>
-                			<input type="hidden" name="event_id" t-att-value="event_id.id"/>
-                			<input type="hidden" name="sess_id" t-att-value="session_id.id"/>
-
-	                		<p t-field="event_id.question_id.text" class="event_text question"/>
-
-	                		<t t-if="event_id.question_id.answer_ids">
-	                			<span class="color_kly">Possible answers:</span>
-	                			<ul>
-	                			<t t-foreach="event_id.question_id.answer_ids" t-as="answer">
-	                				<li><span class="inv_color_kly" t-field="answer.name"/></li>
-	                			</t>
-	                			</ul>
-	                		</t>
-
-	                		<span class="color_kly">Your answer ----></span> <input type="text" name="answer" class="answer" required="True"/>
-		                	<t t-if="error_answer">
-		                		<br/>
-		                		<br/>
-		                		<br/>
-		                		<span class="color_kly" t-esc="error_answer"/>
+                	<div class="row">
+                		<div class="col-xs-12 col-md-8 col-md-offset-2">
+		                	<h1 class="text-center">
+		                		<span class="color_kly" t-field="chapter_id.name"/><br/>
+		                	</h1>
+		                	<p class="event_text text-justify" t-field="event_id.text"/>
+		                	<t t-if="event_id.sequence == 3 and chapter_id.sequence == 2">
+		                		<div class="text-center">
+			                		<img src="/kly_c/static/src/img/aiki.jpg"/>
+			                	</div>
 		                	</t>
-	                		
-	                		<h1 class="text-right btn_play">
-								<button id="btn_play" type="submit" class="color_kly"><b>NEXT</b></button>
-							</h1>
-	                	</form>
-                	</div>
-                	<t t-if="not event_id.has_question">
-						<h1 class="text-right btn_play">
-							<a id="btn_play" class="color_kly" t-att-href="'/TSRGIST3000/'+str(session_id.id)+'/next'"><b>NEXT</b></a>
-						</h1>
-					</t>
-					<h4 id="disclaimer">
-						<span class="color_kly" t-field="session_id.inventory_id.name"/>
-						<ul class="mt16">
-							<t t-foreach="session_id.inventory_id.item_ids" t-as="item">
-								<li class="item_inventory">
-									<span class="inv_color_kly" t-field="item.name"/>
-								</li>
+
+		                	<div class="text-justify" t-if="event_id.has_question">
+		                		<form id="answer_question" action="/TSRGIST3000/answer" method="post">
+		                			<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+		                			<input type="hidden" name="chapter_id" t-att-value="chapter_id.id"/>
+		                			<input type="hidden" name="event_id" t-att-value="event_id.id"/>
+		                			<input type="hidden" name="sess_id" t-att-value="session_id.id"/>
+
+
+			                		<div class="text-center">
+			                			<p t-field="event_id.question_id.text" class="event_text question"/>
+				                		<span class="color_kly">Your answer ----></span> <input type="text" name="answer" class="answer" required="True"/>
+					                	<t t-if="error_answer">
+					                		<br/>
+					                		<br/>
+					                		<br/>
+					                		<span class="color_kly" t-esc="error_answer"/>
+					                	</t>
+					                </div>
+			                		
+			                		<h1 class="text-right btn_play">
+										<button id="btn_play" type="submit" class="color_kly"><b>NEXT</b></button>
+									</h1>
+			                	</form>
+		                	</div>
+		                	<t t-if="not event_id.has_question">
+								<h1 class="text-right btn_play">
+									<a id="btn_play" class="color_kly" t-att-href="'/TSRGIST3000/'+str(session_id.id)+'/next'"><b>NEXT</b></a>
+								</h1>
 							</t>
-						</ul>
-					</h4>
+		            		<t t-if="event_id.question_id.answer_ids">
+		            			<h4 class="text-left mt32">
+		                			<span class="color_kly">Possible answers:</span>
+		                			<ul class="mt16">
+			                			<t t-foreach="event_id.question_id.answer_ids" t-as="answer">
+			                				<li><span class="inv_color_kly" t-field="answer.name"/></li>
+			                			</t>
+		                			</ul>
+		                		</h4>
+		            		</t>
+							<h4 id="disclaimer" class="mt16">
+								<span class="color_kly" t-field="session_id.inventory_id.name"/>
+								<ul class="mt16">
+									<t t-foreach="session_id.inventory_id.item_ids" t-as="item">
+										<li class="item_inventory">
+											<span class="inv_color_kly" t-field="item.name"/>
+										</li>
+									</t>
+								</ul>
+							</h4>
+						</div>
+					</div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+	<template id="kly_c.ending" name="Kly End">
+        <t t-call="website.layout">
+            <div class="wrap">
+                <div class="container">
+                	<h2 class="text-center mt32">
+	                	<span class="color_kly">We wish you a happy birthday Kelly !</span>
+	                </h2>
+	                <div class="row">
+	                	<div class="col-xs-12 col-md-4 col-md-offset-2">
+	                		<h4>Phone #1</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4">
+	                		<h4>Phone #2</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4 col-md-offset-2">
+	                		<h4>Phone #3</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4">
+	                		<h4>Phone #4</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4 col-md-offset-2">
+	                		<h4>Phone #5</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4">
+	                		<h4>Phone #6</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4 col-md-offset-2">
+	                		<h4>Phone #7</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4">
+	                		<h4>Phone #8</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4 col-md-offset-2">
+	                		<h4>Phone #9</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4">
+	                		<h4>Phone #10</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                </div>
+					
+
+
+
+	                <!-- <h2 class="text-center mt64">
+						The best story teller you will ever see in your life !
+					</h2>
+					<h2 class="text-center mt32">
+						Based on the imagination engine,<br/>
+						<span class="color_kly">T</span>he <span class="color_kly">S</span>uper <span class="color_kly">R</span>ealistic <span class="color_kly">G</span>liter <span class="color_kly">I</span>nterractive <span class="color_kly">S</span>tory <span class="color_kly">T</span>eller <span class="color_kly">3</span>000
+					</h2>
+					<h2 class="text-center mt64">
+						<a id="btn_play" class="color_kly" href="/TSRGIST3000/new"><b>PLAY</b></a>
+					</h2>
+					<h4 id="disclaimer" class="mt64">
+						DISCLAIMER:<br/>
+						Any resemblance to real persons, living or dead, is purely <span class="color_kly">intentional</span> of course.
+					</h4> -->
+
+					<!-- <audio controls="controls">
+						<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+						hmmm ?
+					</audio> -->
                 </div>
             </div>
         </t>

@@ -66,9 +66,9 @@ footer{
 	text-decoration: none;
 }
 #disclaimer{
-	position: absolute;
+	/*position: absolute;
 	bottom: 75px;
-	left: 65px;
+	left: 65px;*/
 }
 
 #btn_play{
@@ -96,7 +96,7 @@ footer{
 }
 
 h1.btn_play{
-	margin-top: 250px;
+	/*margin-top: 250px;*/
 }
 
 div.navbar.navbar-default.navbar-static-top{

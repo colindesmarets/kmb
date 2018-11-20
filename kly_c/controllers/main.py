@@ -132,23 +132,40 @@ class klyController(http.Controller):
 				}
 				return request.render("kly_c.story", values)
 			else:
+
 				if answer_id.code == "27":
 					# fight
-					print("7")
-				elif answer_id.code == "21":
+					print("27")
+					chapter_id = request.env['story.chapter'].search([('sequence','=',2)])
+				elif answer_id.code == "31":
 					# destiny
-					print("1")
-				elif answer_id.code == "212":
+					print("31")
+					chapter_id = request.env['story.chapter'].search([('sequence','=',2)])
+				elif answer_id.code == "42":
 					# nothing
-					print("12")
-				elif answer_id.code == "24":
+					print("42")
+					chapter_id = request.env['story.chapter'].search([('sequence','=',2)])
+				elif answer_id.code == "54":
 					# dog noises
-					print("4")
-				elif answer_id.code == "26":
+					print("54")
+					chapter_id = request.env['story.chapter'].search([('sequence','=',2)])
+				elif answer_id.code == "6":
 					# feeling
 					print("6")
+					chapter_id = request.env['story.chapter'].search([('sequence','=',2)])
+				event_id = chapter_id.event_ids.filtered(lambda e:e.sequence == int(answer_id.code))
+				if answer_id.code == "6":
+					feeling_item = request.env['inventory.item'].search([('code','=','feeling')])
+					event_id.text = "Your "+str(feeling_item.name)+" does not seem to affect her.\nYou could think robots can't understand feelings but actually she's a dog..."
+					if feeling_item:
+						feeling_item.unlink()
+					feeling_answer = request.env['story.answer'].search([('code','=','6')])
+					if feeling_answer:
+						feeling_answer.unlink()
+
+				session_id.chapter = chapter_id.sequence
+				session_id.event = event_id.sequence
 				values = {
-					'error_answer': "JE DOIS TERMINER CETTE PARTIE LA OMGGGG MAIS TKT NI AIKI NI KELLY NE MEURENT DANS AUCUN DES CHOIX AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					'session_id': session_id,
 					'chapter_id': chapter_id,
 					'event_id': event_id,
@@ -170,7 +187,18 @@ class klyController(http.Controller):
 		chapter_id = session_id.story_id.chapter_ids.filtered(lambda c:c.sequence == session_id.chapter)
 		event_id = chapter_id.event_ids.filtered(lambda e:e.sequence == session_id.event)
 
+		if session_id.chapter == 4 and session_id.event == 6:
+			values = {
+				'session_id': session_id,
+			}
+			return request.render("kly_c.ending", values)
+
 		next_chapter_id, next_event_id = self.get_next(chapter_id=chapter_id, event_id=event_id)
+		if chapter_id.sequence == 2:
+			if event_id.sequence in [6,42,54,27]:
+				next_chapter_id = chapter_id
+				next_event_id = next_chapter_id.event_ids.filtered(lambda e:e.sequence == 5)
+
 		session_id.chapter = next_chapter_id.sequence
 		session_id.event = next_event_id.sequence
 
@@ -182,3 +210,7 @@ class klyController(http.Controller):
 			'event_id': next_event_id,
 		}
 		return request.render("kly_c.story", values)
+
+	@http.route(['/TSRGIST3000/end'], type='http', auth='user', website=True)
+	def TSRGIST3000_end(self, **kw):
+		return request.render("kly_c.ending")
