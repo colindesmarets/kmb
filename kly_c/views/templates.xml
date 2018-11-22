@@ -169,50 +169,73 @@
 	                	<div class="col-xs-12 col-md-4 col-md-offset-2">
 	                		<h4>Phone #3</h4>
 	                		<audio controls="controls">
-								<source src="/kly_c/static/src/img/romain.mp3" type="audio/mpeg"/>
+								<source src="/kly_c/static/src/img/aurelie.mp3" type="audio/mpeg"/>
 							</audio>
 	                	</div>
 	                	<div class="col-xs-12 col-md-4">
 	                		<h4>Phone #4</h4>
 	                		<audio controls="controls">
-								<source src="/kly_c/static/src/img/aurelie.mp3" type="audio/mpeg"/>
+								<source src="/kly_c/static/src/img/baptiste3.mp3" type="audio/mpeg"/>
 							</audio>
 	                	</div>
 	                	<div class="col-xs-12 col-md-4 col-md-offset-2">
 	                		<h4>Phone #5</h4>
 	                		<audio controls="controls">
-								<source src="/kly_c/static/src/img/laura.mp3" type="audio/mpeg"/>
+								<source src="/kly_c/static/src/img/jade.mp3" type="audio/mpeg"/>
 							</audio>
 	                	</div>
 	                	<div class="col-xs-12 col-md-4">
 	                		<h4>Phone #6</h4>
 	                		<audio controls="controls">
-								<source src="/kly_c/static/src/img/kathleen.mp3" type="audio/mpeg"/>
+								<source src="/kly_c/static/src/img/laura.mp3" type="audio/mpeg"/>
 							</audio>
 	                	</div>
 	                	<div class="col-xs-12 col-md-4 col-md-offset-2">
 	                		<h4>Phone #7</h4>
 	                		<audio controls="controls">
-								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+								<source src="/kly_c/static/src/img/kathleen.mp3" type="audio/mpeg"/>
 							</audio>
 	                	</div>
 	                	<div class="col-xs-12 col-md-4">
 	                		<h4>Phone #8</h4>
 	                		<audio controls="controls">
-								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+								<source src="/kly_c/static/src/img/colfdsfdsin.mp3" type="audio/mpeg"/>
 							</audio>
 	                	</div>
 	                	<div class="col-xs-12 col-md-4 col-md-offset-2">
 	                		<h4>Phone #9</h4>
 	                		<audio controls="controls">
-								<source src="/kly_c/static/src/img/baptiste3.mp3" type="audio/mpeg"/>
+								<source src="/kly_c/static/src/img/romain.mp3" type="audio/mpeg"/>
 							</audio>
 	                	</div>
 	                	<div class="col-xs-12 col-md-4">
 	                		<h4>Phone #10</h4>
 	                		<audio controls="controls">
-								<source src="/kly_c/static/src/img/colin.mp3" type="audio/mpeg"/>
+								<source src="/kly_c/static/src/img/jimmy.mp3" type="audio/mpeg"/>
 							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4 col-md-offset-2">
+	                		<h4>Phone #11</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/Kam.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                	<div class="col-xs-12 col-md-4">
+	                		<h4>Phone #12</h4>
+	                		<audio controls="controls">
+								<source src="/kly_c/static/src/img/papy_martin.mp3" type="audio/mpeg"/>
+							</audio>
+	                	</div>
+	                </div>
+                	<h4 class="text-center mt32">
+	                	<span class="color_kly">No animals or human beings were harmed during the making of this story</span>
+	                </h4>
+	                <div class="row">
+	                	<div class="hidden-xs hidden-sm col-md-6 text-center">
+	                		<img src="/kly_c/static/src/img/bebe.PNG" width="305px" height="244px"/>
+	                	</div>
+	                	<div class="col-xs-12 col-sm-12 col-md-6 text-center">
+	                		<img src="/kly_c/static/src/img/hpdog.jpg" width="305px" height="244px"/>
 	                	</div>
 	                </div>
 					
